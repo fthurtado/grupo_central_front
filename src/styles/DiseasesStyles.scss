@@ -1,0 +1,89 @@
+.diseases-container {
+  width: 94vw;
+  max-height: 90vh;
+  padding: 5vh 3vw;
+  position: relative;
+
+  .title {
+    font-size: 25px;
+    margin: 0 0 5vh;
+    text-align: center;
+  }
+
+  .info-container {
+    width: 100%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+
+    .left-container {
+      width: 30%;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      border: .5px solid black;
+      position: relative;
+
+      .options {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        .option {
+          width: 40%;
+          padding: 4% 5%;
+          text-align: left;
+          border: .5px solid black;
+          cursor: pointer;
+        }
+      }
+
+      .diseases {
+        width: 100%;
+        padding: 2vh 0 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        border: .5px solid black;
+        position: relative;
+
+        .search-bar {
+          width: 70%;
+          padding: 2% 5%;
+          border: .5px solid black;
+          border-radius: 5px;
+          margin: 0 0 1vh 0;
+        }
+
+        .disease-container {
+          width: 70%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          position: relative;
+          cursor: pointer;
+          border-bottom: .3px solid rgb(174, 174, 174);
+
+          p {
+            width: 90%;
+          }
+        }
+      }
+    }
+
+    .right-container {
+      width: 65%;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      border: .5px solid black;
+      position: relative;
+    }
+  }
+}
