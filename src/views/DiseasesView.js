@@ -19,6 +19,7 @@ function Diseases() {
 
   // States
   const [diseases, setDiseases] = useState({});
+  const [showFavs, setShowFavs] = useState(false);
 
   // Load data first then return the view
   useEffect(() => {
@@ -29,6 +30,12 @@ function Diseases() {
       .catch((err) => console.log(err));
   }, []);
 
+  const updateFavoriteState = (name) => {
+    const diseasesCopy = { ...diseases };
+    diseasesCopy[name].favorite = !diseases[name].favorite;
+    setDiseases(diseasesCopy);
+  }
+
   return (Object.keys(diseases).length > 0) && (
     <div className="diseases-container">
       <p className="title">
@@ -37,21 +44,33 @@ function Diseases() {
       <div className="info-container">
         <div className="left-container">
           <div className="options">
-            <div className="option">
+            <div
+              className={`option ${(!showFavs) && 'selected'}`}
+              onClick={() => setShowFavs(false)}
+            >
               Enfermedad
             </div>
-            <div className="option">
+            <div
+              className={`option ${(showFavs) && 'selected'}`}
+              onClick={() => setShowFavs(true)}
+            >
               Favoritos
             </div>
           </div>
           <div className="diseases">
             <input type="text" className="search-bar" placeholder="Nombre enfermedad..." />
-            {Object.keys(diseases).map((name) => (
+            {Object.keys(diseases)
+            .filter((name) => (showFavs) ? diseases[name].favorite : true)
+            .map((name) => (
               <div className="disease-container">
                 <p>
                   {name}
                 </p>
-                <AiOutlineHeart />
+                {(diseases[name].favorite) ? (
+                  <AiFillHeart onClick={() => updateFavoriteState(name)} />
+                  ) : (
+                  <AiOutlineHeart onClick={() => updateFavoriteState(name)} />
+                )}
               </div>
             ))}
           </div>

@@ -39,6 +39,10 @@
           text-align: left;
           border: .5px solid black;
           cursor: pointer;
+
+          &.selected {
+            background-color: rgba(234, 234, 234, 0.597);
+          }
         }
       }
 
