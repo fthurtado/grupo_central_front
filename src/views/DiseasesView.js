@@ -20,7 +20,14 @@ function Diseases() {
   // States
   const [diseases, setDiseases] = useState({});
   const [showFavs, setShowFavs] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
+  const updateFavoriteState = (name) => {
+    const diseasesCopy = { ...diseases };
+    diseasesCopy[name].favorite = !diseases[name].favorite;
+    setDiseases(diseasesCopy);
+  }
+  
   // Load data first then return the view
   useEffect(() => {
     loaddata()
@@ -29,12 +36,6 @@ function Diseases() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  const updateFavoriteState = (name) => {
-    const diseasesCopy = { ...diseases };
-    diseasesCopy[name].favorite = !diseases[name].favorite;
-    setDiseases(diseasesCopy);
-  }
 
   return (Object.keys(diseases).length > 0) && (
     <div className="diseases-container">
@@ -58,11 +59,22 @@ function Diseases() {
             </div>
           </div>
           <div className="diseases">
-            <input type="text" className="search-bar" placeholder="Nombre enfermedad..." />
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Nombre enfermedad..."
+              onChange={(e) => setSearchText(e.target.value)}
+            />
             {Object.keys(diseases)
             .filter((name) => (showFavs) ? diseases[name].favorite : true)
-            .map((name) => (
-              <div className="disease-container">
+            .filter((name) => (searchText.length > 0)
+              ? name.toLowerCase().includes(searchText)
+              : true)
+            .map((name, i) => (
+              <div
+                key={i}
+                className="disease-container"
+              >
                 <p>
                   {name}
                 </p>
