@@ -1,7 +1,7 @@
 .diseases-container {
-  width: 94vw;
+  width: 98vw;
   max-height: 90vh;
-  padding: 5vh 3vw;
+  padding: 5vh 1vw;
   position: relative;
 
   .title {
@@ -20,11 +20,11 @@
     position: relative;
 
     .left-container {
-      width: 30%;
+      width: 25%;
       height: 80vh;
       display: flex;
       flex-direction: column;
-      border: .5px solid black;
+      border: 1px solid black;
       position: relative;
 
       .options {
@@ -37,11 +37,16 @@
           width: 40%;
           padding: 4% 5%;
           text-align: left;
-          border: .5px solid black;
+          border-right: 1px solid black;
+          border-bottom: 1px solid black;
           cursor: pointer;
 
           &.selected {
             background-color: rgba(234, 234, 234, 0.597);
+          }
+
+          &.none-border-right {
+            border-right: none;
           }
         }
       }
@@ -53,7 +58,6 @@
         flex-direction: column;
         align-items: center;
         overflow-y: auto;
-        border: .5px solid black;
         position: relative;
 
         .search-bar {
@@ -82,12 +86,54 @@
     }
 
     .right-container {
-      width: 65%;
+      width: 74%;
       height: 80vh;
       display: flex;
       flex-direction: column;
-      border: .5px solid black;
+      justify-content: space-between;
       position: relative;
+
+      .disease-name {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+
+        p {
+          font-size: 22px;
+          margin: 0 1vw 0 0;
+          text-align: left;
+        }
+      }
+
+      select {
+        width: 10%;
+        height: 5vh;
+        padding: 0 .7vw;
+        border: 1px solid rgb(134, 134, 134);
+        border-radius: 15px;
+      }
+
+      .graph {
+        font-size: 13px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+    
+        .header {
+          border: .5px solid black;
+          padding: 2vh 0;
+        }
+    
+        .cell {
+          border: .5px solid black;
+          text-align: center;
+          padding: 1vh 0;
+        }
+      }
     }
   }
 }

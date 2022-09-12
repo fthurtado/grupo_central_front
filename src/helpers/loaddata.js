@@ -2,7 +2,7 @@ import axios from "axios";
 
 const base_url = "http://localhost:8000"
 
-function loaddata() {
+function loadData() {
   const diseases = axios.request({
     method: 'get',
     url: `${base_url}/get-diseases/`,
@@ -13,4 +13,4 @@ function loaddata() {
   return diseases;
 }
 
-export default loaddata;
+export default loadData;
